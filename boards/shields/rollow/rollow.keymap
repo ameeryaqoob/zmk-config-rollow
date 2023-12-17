@@ -192,85 +192,85 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
+                = <&macro_tap_time 2>
                 , <&msc SCRL_Y(-50)>;
          };
         downslow: downslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
+                = <&macro_tap_time 2>
                 , <&msc SCRL_Y(50)>;
          };
         leftslow: leftslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
+                = <&macro_tap_time 2>
                 , <&msc SCRL_X(50)>;
          };
         rightslow: rightslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
+                = <&macro_tap_time 2>
                 , <&msc SCRL_X(-50)>;
          };
         upmed: upmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_Y(-200)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_Y(-150)>;
          };
         downmed: downmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_Y(200)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_Y(150)>;
          };
         leftmed: leftmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_X(200)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_X(150)>;
          };
         rightmed: rightmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_X(-200)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_X(-150)>;
          };
         upfast: upfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_Y(-800)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_Y(-450)>;
          };
         downfast: downfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_Y(800)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_Y(450)>;
          };
         leftfast: leftfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_X(800)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_X(450)>;
          };
         rightfast: rightfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 5>
-                , <&msc SCRL_X(-800)>;
+                = <&macro_tap_time 2>
+                , <&msc SCRL_X(-450)>;
          };
 //-----------------------------------------------------
         monumgui: monumgui {
