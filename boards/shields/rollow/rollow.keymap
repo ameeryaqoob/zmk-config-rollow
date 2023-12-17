@@ -101,22 +101,6 @@
             bindings = <&mo>, <&kp>;
         };  
 //----------------------ARROW MODS-------------------------
-        left_upmed: left_upmed {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp UP>, <&upmed>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-        right_downmed: right_downmed {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOWN>, <&downmed>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-        scroll_mod: scroll_mod {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&right_downmed>, <&left_upmed>;
         };
         left_backspace: left_backspace {
             compatible = "zmk,behavior-mod-morph";
@@ -316,7 +300,7 @@ bindings = <
 &as LSHIFT Z &kp X &kp C &kp V &kp B                                   &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
      &kp LC(LEFT) &spacemouse 1 SPACE &monumgui                                          &returnnum 4 RET &hr LS(LG(LA(LCTRL))) BSPC &kp RC(RIGHT)
               >;
-            sensor-bindings = <&arrow_mods &scroll_mod>; //clockwise counterclockwise
+            sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         1 {
             display-name = "MOUSEII";
@@ -356,7 +340,7 @@ bindings = <
 &kp LSHIFT &none &none &none &none      &none &none &none &none &kp RSHIFT 
             &kp LC(LEFT) &kp SPACE &kp LGUI           &kp RET &kp BSPC &kp RC(RIGHT)
               >;
-            sensor-bindings = <&arrow_mods &inc_dec_kp UP DOWN>; //clockwise counterclockwise
+            sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         5 {
             display-name = "BLE";
@@ -380,4 +364,3 @@ bindings = <
             };
         };
     };
-};
