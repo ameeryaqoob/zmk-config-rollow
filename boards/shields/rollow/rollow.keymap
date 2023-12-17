@@ -319,7 +319,7 @@ bindings = <
             sensor-bindings = <&scroll_mod &arrow_mods>; //clockwise counterclockwise
         };
         1 {
-            display-name = "MOUSE||";
+            display-name = "MOUSEII";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-1500) &none &kp RG(V) 
 &kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_X(1500) &moto 3 3 
@@ -329,7 +329,7 @@ bindings = <
             sensor-bindings = <&med_y &med_x>; //clockwise counterclockwise
         };
         2 {
-            display-name = "MOUSE|";
+            display-name = "MOUSEI";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-500) &none &kp RG(V)  
 &kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-500) &mmv MOVE_Y(500) &mmv MOVE_X(500) &to 1 
@@ -339,7 +339,7 @@ bindings = <
             sensor-bindings = <&slow_y &slow_x>; //clockwise counterclockwise
         };
         3 {
-            display-name = "MOUSE|||";
+            display-name = "MOUSEIII";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-2500) &none &kp RG(V) 
 &kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-2500) &mmv MOVE_Y(2500) &mmv MOVE_X(2500) &none 
@@ -369,7 +369,7 @@ bindings = <
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>; //clockwise counterclockwise
             };
         6 {
-            display-name = "GAEMR"; // 8 character max
+            display-name = "GAEM"; // 8 character max
 bindings = <
 &kp Q &kp W &kp E &kp R &kp T               &kp Y &kp U &kp I &kp O &kp P
 &kp A &kp S &kp D &kp F &kp G               &kp H &kp J &kp K &kp L &kp SEMI
