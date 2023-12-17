@@ -1,7 +1,7 @@
 if SHIELD_ROLLOW_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "Rollow"
+    default "gamer device 3"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
