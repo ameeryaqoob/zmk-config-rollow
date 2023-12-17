@@ -116,7 +116,7 @@
         scroll_mod: scroll_mod {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&left_upmed>, <&right_downmed>;
+            bindings = <&right_downmed>, <&left_upmed>;
         };
         left_backspace: left_backspace {
             compatible = "zmk,behavior-mod-morph";
@@ -175,7 +175,7 @@
         slow_y: slow_y {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&upslow>, <&downslow>;
+            bindings = <&downslow>, <&upslow>;
         };
         slow_x: slow_x {
             compatible = "zmk,behavior-sensor-rotate";
@@ -185,7 +185,7 @@
         med_y: med_y {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&upmed>, <&downmed>;
+            bindings = <&downmed>, <&upmed>;
         };
         med_x: med_x {
             compatible = "zmk,behavior-sensor-rotate";
@@ -195,7 +195,7 @@
         fast_y: fast_y {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&upfast>, <&downfast>;
+            bindings = <&downfast>, <&upfast>;
         };
         fast_x: fast_x {
             compatible = "zmk,behavior-sensor-rotate";
@@ -316,7 +316,7 @@ bindings = <
 &as LSHIFT Z &kp X &kp C &kp V &kp B                                   &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
      &kp LC(LEFT) &spacemouse 1 SPACE &monumgui                                          &returnnum 4 RET &hr LS(LG(LA(LCTRL))) BSPC &kp RC(RIGHT)
               >;
-            sensor-bindings = <&scroll_mod &arrow_mods>; //clockwise counterclockwise
+            sensor-bindings = <&arrow_mods &scroll_mod>; //clockwise counterclockwise
         };
         1 {
             display-name = "MOUSEII";
@@ -326,7 +326,7 @@ bindings = <
 &kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &moto 2 2  
             &trans &kp SPACE &monumgui         &mkp MB2 &mkp MB1 &trans
               >;
-            sensor-bindings = <&med_y &med_x>; //clockwise counterclockwise
+            sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
         2 {
             display-name = "MOUSEI";
@@ -336,7 +336,7 @@ bindings = <
 &kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &none   
             &trans &kp SPACE &monumgui         &mkp MB2 &mkp MB1 &trans
               >;
-            sensor-bindings = <&slow_y &slow_x>; //clockwise counterclockwise
+            sensor-bindings = <&slow_x &slow_y>; //clockwise counterclockwise
         };
         3 {
             display-name = "MOUSEIII";
@@ -346,7 +346,7 @@ bindings = <
 &kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &to 1   
             &trans &kp SPACE &monumgui        &mkp MB2 &mkp MB1 &trans 
               >;
-            sensor-bindings = <&fast_y &fast_x>; //clockwise counterclockwise
+            sensor-bindings = <&fast_x &fast_y>; //clockwise counterclockwise
         };
         4 {
             display-name = "NUMERAL";
@@ -356,7 +356,7 @@ bindings = <
 &kp LSHIFT &none &none &none &none      &none &none &none &none &kp RSHIFT 
             &kp LC(LEFT) &kp SPACE &kp LGUI           &kp RET &kp BSPC &kp RC(RIGHT)
               >;
-            sensor-bindings = <&inc_dec_kp UP DOWN &arrow_mods>; //clockwise counterclockwise
+            sensor-bindings = <&arrow_mods &inc_dec_kp UP DOWN>; //clockwise counterclockwise
         };
         5 {
             display-name = "BLE";
@@ -376,7 +376,7 @@ bindings = <
 &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M &kp COMMA &kp DOT &kp SLASH
 &kp GRAVE &kp SPACE &kp LSHIFT              &kp RET &kp BSPC &kp TAB
               >;
-            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp RIGHT LEFT>; //clockwise counterclockwise
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>; //clockwise counterclockwise
             };
         };
     };
