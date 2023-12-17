@@ -346,7 +346,7 @@ bindings = <
             display-name = "NUMERAL";
 bindings = <
 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-&kp GRAVE &hr LALT TAB &kp LGUI &kp LCTRL &kp CAPS           &kp LBKT &hr RCTRL RBKT &hr RGUI BSLH &hr RALT MINUS &kp EQUAL 
+&kp GRAVE &hr LALT TAB &kp LGUI &kp LCTRL &kp CAPS           &kp BSLH &hr RCTRL LBKT &hr RGUI RBKT &hr RALT MINUS &kp EQUAL 
 &kp LSHIFT &none &none &none &none      &none &none &none &none &kp RSHIFT 
             &kp LC(LEFT) &kp SPACE &kp LGUI           &kp RET &kp BSPC &kp RC(RIGHT)
               >;
