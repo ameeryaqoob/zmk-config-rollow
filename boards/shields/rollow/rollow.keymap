@@ -35,7 +35,7 @@ combos {
             bindings = <&to 4>;
             };
         compatible = "zmk,combos";
-        combo_blue {
+        combo_ble {
             timeout-ms = <50>;
             key-positions = <4 24>;
             bindings = <&to 5>;
@@ -54,9 +54,15 @@ combos {
             };
         compatible = "zmk,combos";
         combo_gamer {
-            timeout-ms = <100>;
+            timeout-ms = <50>;
             key-positions = <2 10 14 26>;
             bindings = <&to 6>;
+            };
+        compatible = "zmk,combos";
+        combo_nav {
+            timeout-ms = <50>;
+            key-positions = <10 23 25>;
+            bindings = <&to 7>;
             };
         };
 behaviors {    
@@ -192,94 +198,94 @@ macros {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_Y(-50)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_Y(-40)>;
          };
         downslow: downslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_Y(50)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_Y(40)>;
          };
         leftslow: leftslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_X(50)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_X(40)>;
          };
         rightslow: rightslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_X(-50)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_X(-40)>;
          };
         upmed: upmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_Y(-150)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_Y(-200)>;
          };
         downmed: downmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_Y(150)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_Y(200)>;
          };
         leftmed: leftmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_X(150)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_X(200)>;
          };
         rightmed: rightmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_X(-150)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_X(-200)>;
          };
         upfast: upfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_Y(-450)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_Y(-1000)>;
          };
         downfast: downfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_Y(450)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_Y(1000)>;
          };
         leftfast: leftfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_X(450)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_X(1000)>;
          };
         rightfast: rightfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_tap_time 2>
-                , <&msc SCRL_X(-450)>;
+                = <&macro_tap_time 3>
+                , <&msc SCRL_X(-1000)>;
          };
 //-----------------------------------------------------------
         monavgui: monavgui {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp LGUI &mo 4>
+                = <&macro_press &mo 7 &kp LGUI>
                 , <&macro_pause_for_release>
-                , <&macro_release &mo 7 &kp LGUI>;
+                , <&macro_release &kp LGUI &mo 7>;
          };
 };
     keymap {
@@ -360,9 +366,9 @@ bindings = <
 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
 &kp GRAVE &kp TAB &none &none &none          &none &none &none &none &none  
 &none &none &none &none &none                &none &none &none &none &none
-      &kp LC(LEFT) &none &none               &none &none &kp RC(RIGHT)
+      &none &none &none               &none &none &none
               >;
-            sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
+            sensor-bindings = <&arrow_mods &inc_dec_kp C_VOL_UP C_VOL_DN>; //clockwise counterclockwise
             };
         };
     };
