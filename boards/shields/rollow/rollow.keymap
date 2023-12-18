@@ -24,43 +24,43 @@
 combos {
         compatible = "zmk,combos";
         combo_escape {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <0 9>;
             bindings = <&kp ESC>;
             };
         compatible = "zmk,combos";
         combo_numerals {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <32 34>;
             bindings = <&to 4>;
             };
         compatible = "zmk,combos";
         combo_ble {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <4 24>;
             bindings = <&to 5>;
             };
         compatible = "zmk,combos";
         combo_layerout {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <31 34>;
             bindings = <&to 0>;
             };
         compatible = "zmk,combos";
         combo_mouse {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <32 33>;
             bindings = <&to 1>;
             };
         compatible = "zmk,combos";
         combo_gamer {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <2 10 14 26>;
             bindings = <&to 6>;
             };
         compatible = "zmk,combos";
         combo_nav {
-            timeout-ms = <50>;
+            timeout-ms = <30>;
             key-positions = <10 23 25>;
             bindings = <&to 7>;
             };
@@ -112,54 +112,30 @@ behaviors {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LEFT>, <&kp BSPC>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RCTL)>;
         };
         right_delete: right_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp RIGHT>, <&kp DEL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_RCTL)>;
         };
         left_alt_backspace: left_alt_backspace {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&left_backspace>, <&kp LA(BSPC)>;
-            mods = <(MOD_LALT|MOD_RALT)>;
+            mods = <(MOD_LCTL)>;
         };
         right_alt_delete: right_alt_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&right_delete>, <&kp LA(DEL)>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-        };
-        left_alt: left_alt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&left_alt_backspace>, <&kp LA(LEFT)>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        right_alt: right_alt {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&right_alt_delete>, <&kp LA(RIGHT)>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-        };
-        left_gui: left_gui {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&left_alt>, <&kp LG(LEFT)>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
-        };
-        right_gui: right_gui {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&right_alt>, <&kp LG(RIGHT)>;
-            mods = <(MOD_LGUI|MOD_RGUI)>;
+            mods = <(MOD_LCTL)>;
         };
         arrow_mods: arrow_mods {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
-            bindings = <&right_gui>, <&left_gui>;
+            bindings = <&right_alt_delete>, <&left_alt_backspace>;
         };
 //--------------------MOUSE SCROLL ROTARY ENCODER FIX--------------------
         slow_y: slow_y {
@@ -296,7 +272,7 @@ bindings = <
 &kp Q &kp W &kp E &kp R &kp T                                          &kp Y &kp U &kp I &kp O &kp P
 &kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G         &kp H &hr RCTRL J &hr RGUI K &hr RALT L &as SEMI APOS
 &as LSHIFT Z &kp X &kp C &kp V &kp B                                   &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
-     &kp LC(LEFT) &spacemouse 1 SPACE &monavgui                                          &returnnum 4 RET &hr LS(LG(LA(LCTRL))) BSPC &kp RC(RIGHT)
+     &kp LC(LEFT) &spacemouse 1 SPACE &monavgui                        &returnnum 4 RET &hr LS(LG(LA(LCTRL))) BSPC &kp RC(RIGHT)
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
