@@ -87,16 +87,23 @@ behaviors {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <150>;
             require-prior-idle-ms = <200>;
             bindings = <&mo>, <&kp>;
         };  
-         returnnum: returnnum {
+         mokp: mokp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <150>;
             bindings = <&mo>, <&kp>;
+        };  
+         monavguito: monavguito {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <150>;
+            bindings = <&monavgui>, <&to>;
         };  
          moto: moto {
             compatible = "zmk,behavior-hold-tap";
@@ -317,16 +324,16 @@ macros {
             display-name = "ALPHA"; // 8 character max
 bindings = <
 &kp Q &kp W &kp E &kp R &kp T                                          &kp Y &kp U &kp I &kp O &kp P
-&kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G         &kp H &hr RCTRL J &hr RGUI K &hr RALT L &as SEMI APOS
+&kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G                          &kp H &hr RCTRL J &hr RGUI K &hr RALT L &as SEMI APOS
 &as LSHIFT Z &kp X &kp C &kp V &kp B                                   &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
-     &kp LEFT &spacemouse 1 SPACE &monavgui                        &returnnum 4 RET &hr LS(LG(LA(LCTRL))) BSPC &kp RIGHT
+     &kp UP &spacemouse 1 SPACE &monavguito 0 8                        &hr LS(LG(LA(LCTRL))) RET &mokp 4 BSPC &kp DOWN
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         1 {
             display-name = "MOUSEII";
 bindings = <
-&mo 0 &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-1500) &none &kp RG(V) 
+&kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-1500) &none &kp RG(V) 
 &kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_X(1500) &moto 3 3 
 &kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &moto 2 2  
             &trans &kp SPACE &monavgui         &mkp MB2 &mkp MB1 &trans
@@ -387,9 +394,19 @@ bindings = <
             display-name = "NAV";
 bindings = <
 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-&kp GRAVE &kp TAB &none &none &none          &none &left &up &right &down  
+&kp GRAVE &kp TAB &none &none &none          &kp PG_UP &left &up &right &down  
+&none &none &none &none &none                &kp PG_DN &none &none &none &none
+      &none &none &none                      &none &none &none
+              >;
+            sensor-bindings = <&arrow_mods &inc_dec_kp C_VOL_UP C_VOL_DN>; //clockwise counterclockwise
+            };
+        8 {
+            display-name = "FUNCTION";
+bindings = <
+&kp F1 &kp F2 &kp F3 &kp F4 &kp F5           &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
+&kp F11 &hr LALT F12 &kp LGUI &kp LCTRL &none &none &kp RCTRL &kp RGUI &kp RALT &none  
 &none &none &none &none &none                &none &none &none &none &none
-      &none &none &none               &none &none &none
+      &none &none &to 0                      &none &none &none
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp C_VOL_UP C_VOL_DN>; //clockwise counterclockwise
             };
