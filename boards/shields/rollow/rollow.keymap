@@ -24,7 +24,7 @@
 combos {
         compatible = "zmk,combos";
         combo_escape {
-            timeout-ms = <50>;
+            timeout-ms = <70>;
             key-positions = <0 9>;
             bindings = <&kp ESC>;
             };
@@ -83,27 +83,26 @@ behaviors {
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         }; 
-         spacemouse: spacemouse {
+         spacemokptp: spacemokptp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&spacemouse>, <&kp>;
+        };  
+         mokphp: mokphp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred"; 
             tapping-term-ms = <150>;
-            require-prior-idle-ms = <200>;
             bindings = <&mo>, <&kp>;
         };  
-         mokp: mokp {
+         monavguitog: monavguitog {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "hold-preferred";
             tapping-term-ms = <150>;
-            bindings = <&mo>, <&kp>;
-        };  
-         monavguito: monavguito {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <150>;
-            bindings = <&monavgui>, <&to>;
+            bindings = <&monavgui>, <&tog>;
         };  
          moto: moto {
             compatible = "zmk,behavior-hold-tap";
@@ -118,25 +117,25 @@ behaviors {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LEFT>, <&kp BSPC>;
-            mods = <(MOD_RCTL)>;
+            mods = <(MOD_LCTL)>;
         };
         right_delete: right_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp RIGHT>, <&kp DEL>;
-            mods = <(MOD_RCTL)>;
+            mods = <(MOD_LCTL)>;
         };
         left_alt_backspace: left_alt_backspace {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&left_backspace>, <&kp LA(BSPC)>;
-            mods = <(MOD_LCTL)>;
+            mods = <(MOD_RCTL)>;
         };
         right_alt_delete: right_alt_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&right_delete>, <&kp LA(DEL)>;
-            mods = <(MOD_LCTL)>;
+            mods = <(MOD_RCTL)>;
         };
         arrow_mods: arrow_mods {
             compatible = "zmk,behavior-sensor-rotate";
@@ -317,16 +316,24 @@ macros {
                 , <&macro_pause_for_release>
                 , <&macro_release &kp LGUI>;
          };
-};
+        spacemouse: spacemouse {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &to 1>
+                , <&macro_pause_for_release>
+                , <&macro_press &to 0>;
+         };
+    };
     keymap {
         compatible = "zmk,keymap";
         0 {
             display-name = "ALPHA"; // 8 character max
 bindings = <
 &kp Q &kp W &kp E &kp R &kp T                                          &kp Y &kp U &kp I &kp O &kp P
-&kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G                          &kp H &hr RCTRL J &hr RGUI K &hr RALT L &as SEMI APOS
-&as LSHIFT Z &kp X &kp C &kp V &kp B                                   &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
-     &kp UP &spacemouse 1 SPACE &monavguito 0 8                        &hr LS(LG(LA(LCTRL))) RET &mokp 4 BSPC &kp DOWN
+&kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G                          &kp H &hr RCTRL J &hr RGUI K &hr RALT L &kp APOS
+&as LSHIFT Z &kp X &kp C &kp V &kp B                            &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
+     &none &spacemokptp 0 SPACE &monavguitog 0 8                        &mt LS(LG(LA(LCTRL))) RET &mokphp 4 BSPC &none
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
@@ -334,8 +341,8 @@ bindings = <
             display-name = "MOUSEII";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-1500) &none &kp RG(V) 
-&kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_X(1500) &moto 3 3 
-&kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &moto 2 2  
+&kp LSHIFT &kp A &kp S &kp D &kp F          &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_X(1500) &moto 3 3 
+&kp TAB &kp Z &kp X &kp C &kp V             &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &moto 2 2  
             &trans &kp SPACE &monavgui         &mkp MB2 &mkp MB1 &trans
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
@@ -344,8 +351,8 @@ bindings = <
             display-name = "MOUSEI";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-500) &none &kp RG(V)  
-&kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-500) &mmv MOVE_Y(500) &mmv MOVE_X(500) &to 1
-&kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &none   
+&kp LSHIFT &kp A &kp S &kp D &kp F          &kp PG_UP &mmv MOVE_X(-500) &mmv MOVE_Y(500) &mmv MOVE_X(500) &to 1
+&kp TAB &kp Z &kp X &kp C &kp V             &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &none   
             &trans &kp SPACE &monavgui         &mkp MB2 &mkp MB1 &trans
               >;
             sensor-bindings = <&slow_x &slow_y>; //clockwise counterclockwise
@@ -354,8 +361,8 @@ bindings = <
             display-name = "MOUSEIII";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-3000) &none &kp RG(V) 
-&kp LSHIFT &kp A &kp S &kp D &kp F          &none &mmv MOVE_X(-3000) &mmv MOVE_Y(3000) &mmv MOVE_X(3000) &none 
-&kp TAB &kp Z &kp X &kp C &kp V             &none &mkp MB4 &mkp MB3 &mkp MB5 &to 1
+&kp LSHIFT &kp A &kp S &kp D &kp F          &kp PG_UP &mmv MOVE_X(-3000) &mmv MOVE_Y(3000) &mmv MOVE_X(3000) &none 
+&kp TAB &kp Z &kp X &kp C &kp V             &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &to 1
             &trans &kp SPACE &monavgui        &mkp MB2 &mkp MB1 &trans 
               >;
             sensor-bindings = <&fast_x &fast_y>; //clockwise counterclockwise
@@ -364,11 +371,11 @@ bindings = <
             display-name = "NUMERAL";
 bindings = <
 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5                        &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-&kp GRAVE &hr LALT TAB &kp LGUI &kp LCTRL &kp CAPS        &kp BSLH &hr RCTRL LBKT &hr RGUI RBKT &hr RALT EQUAL &kp MINUS 
-&kp LSHIFT &none &none &none &none                        &none &none &none &none &kp RSHIFT 
-            &trans &kp SPACE &monavgui                    &kp RET &kp BSPC &trans
+&kp GRAVE &hr LALT TAB &kp LGUI &kp LCTRL &kp CAPS        &kp EQUAL &hr RCTRL LBKT &hr RGUI RBKT &hr RALT SEMI &kp MINUS 
+&kp LSHIFT &none &none &none &none                        &none &kp BSLH &kp COMMA &kp DOT &kp RSHIFT
+&trans &kp SPACE &monavgui                    &kp RET &kp BSPC &trans
               >;
-            sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
+            sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         5 {
             display-name = "BLE";
@@ -394,8 +401,8 @@ bindings = <
             display-name = "NAV";
 bindings = <
 &kp N1 &kp N2 &kp N3 &kp N4 &kp N5           &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-&kp GRAVE &kp TAB &none &none &none          &kp PG_UP &left &up &right &down  
-&none &none &none &none &none                &kp PG_DN &none &none &none &none
+&kp GRAVE &kp TAB &none &none &none          &none &left &up &right &down  
+&none &none &none &none &none                &none &none &none &none &none
       &none &none &none                      &none &none &none
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp C_VOL_UP C_VOL_DN>; //clockwise counterclockwise
@@ -406,7 +413,7 @@ bindings = <
 &kp F1 &kp F2 &kp F3 &kp F4 &kp F5           &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
 &kp F11 &hr LALT F12 &kp LGUI &kp LCTRL &none &none &kp RCTRL &kp RGUI &kp RALT &none  
 &none &none &none &none &none                &none &none &none &none &none
-      &none &none &to 0                      &none &none &none
+      &none &none &tog 8                     &none &none &none
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp C_VOL_UP C_VOL_DN>; //clockwise counterclockwise
             };
