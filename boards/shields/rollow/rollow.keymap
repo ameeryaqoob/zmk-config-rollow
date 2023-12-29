@@ -180,84 +180,84 @@ macros {
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_Y(-40)>;
+                , <&msc MOVE_Y(-40)>;
          };
         downslow: downslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_Y(40)>;
+                , <&msc MOVE_Y(40)>;
          };
         leftslow: leftslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_X(40)>;
+                , <&msc MOVE_X(40)>;
          };
         rightslow: rightslow {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_X(-40)>;
+                , <&msc MOVE_X(-40)>;
          };
         upmed: upmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_Y(-200)>;
+                , <&msc MOVE_Y(-200)>;
          };
         downmed: downmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_Y(200)>;
+                , <&msc MOVE_Y(200)>;
          };
         leftmed: leftmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_X(200)>;
+                , <&msc MOVE_X(200)>;
          };
         rightmed: rightmed {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_X(-200)>;
+                , <&msc MOVE_X(-200)>;
          };
         upfast: upfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_Y(-1000)>;
+                , <&msc MOVE_Y(-1000)>;
          };
         downfast: downfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_Y(1000)>;
+                , <&msc MOVE_Y(1000)>;
          };
         leftfast: leftfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_X(1000)>;
+                , <&msc MOVE_X(1000)>;
          };
         rightfast: rightfast {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
                 = <&macro_tap_time 3>
-                , <&msc SCRL_X(-1000)>;
+                , <&msc MOVE_X(-1000)>;
          };
 //-----------------------------------------------------------
         monavgui: monavgui {
