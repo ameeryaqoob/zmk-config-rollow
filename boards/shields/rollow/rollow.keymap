@@ -1,5 +1,5 @@
-// build command: west build -d build/left -b nice_nano_v2 -- -DSHIELD=rollow_left -DZMK_CONFIG=/Users/ameer/zmk-config
-// west build -d build/right -b nice_nano_v2 -- -DSHIELD=rollow_right -DZMK_CONFIG=/Users/ameer/zmk-config
+// west build -p -d build/left -b nice_nano_v2 -- -DSHIELD=rollow_left -DZMK_EXTRA_MODULES=/Users/test/zmk-config
+// west build -p -d build/right -b nice_nano_v2 -- -DSHIELD=rollow_right -DZMK_EXTRA_MODULES=/Users/test/zmk-config
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -343,7 +343,7 @@ bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-1500) &none &kp RG(V) 
 &kp LSHIFT &kp A &kp S &kp D &kp F          &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_X(1500) &moto 3 3 
 &kp TAB &kp Z &kp X &kp C &kp V             &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &moto 2 2  
-            &trans &kp SPACE &monavgui         &mkp MB2 &mkp MB1 &trans
+            &trans &kp SPACE &monavgui         &mkp MB1 &mkp MB2 &trans
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
@@ -353,7 +353,7 @@ bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-500) &none &kp RG(V)  
 &kp LSHIFT &kp A &kp S &kp D &kp F          &kp PG_UP &mmv MOVE_X(-500) &mmv MOVE_Y(500) &mmv MOVE_X(500) &to 1
 &kp TAB &kp Z &kp X &kp C &kp V             &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &none   
-            &trans &kp SPACE &monavgui         &mkp MB2 &mkp MB1 &trans
+            &trans &kp SPACE &monavgui         &mkp MB1 &mkp MB2 &trans
               >;
             sensor-bindings = <&slow_x &slow_y>; //clockwise counterclockwise
         };
@@ -363,7 +363,7 @@ bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-3000) &none &kp RG(V) 
 &kp LSHIFT &kp A &kp S &kp D &kp F          &kp PG_UP &mmv MOVE_X(-3000) &mmv MOVE_Y(3000) &mmv MOVE_X(3000) &none 
 &kp TAB &kp Z &kp X &kp C &kp V             &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &to 1
-            &trans &kp SPACE &monavgui        &mkp MB2 &mkp MB1 &trans 
+            &trans &kp SPACE &monavgui        &mkp MB1 &mkp MB2 &trans 
               >;
             sensor-bindings = <&fast_x &fast_y>; //clockwise counterclockwise
         };
