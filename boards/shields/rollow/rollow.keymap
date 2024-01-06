@@ -333,7 +333,7 @@ bindings = <
 &kp Q &kp W &kp E &kp R &kp T                                          &kp Y &kp U &kp I &kp O &kp P
 &kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G                          &kp H &hr RCTRL J &hr RGUI K &hr RALT L &kp APOS
 &as LSHIFT Z &kp X &kp C &kp V &kp B                            &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
-     &none &spacemokptp 0 SPACE &monavguitog 0 8                        &mt LS(LG(LA(LCTRL))) RET &mokphp 4 BSPC &none
+     &none &monavguitog 0 8 &spacemokptp 0 SPACE                        &mokphp 4 BSPC &mt LS(LG(LA(LCTRL))) RET &none
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
