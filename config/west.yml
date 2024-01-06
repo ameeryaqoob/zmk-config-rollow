@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: caksoylar
       url-base: https://github.com/caksoylar
+    - name: ameeryaqoob
+      url-base: https://github.com/ameeryaqoob
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -11,5 +13,9 @@ manifest:
       remote: caksoylar
       revision: feat/mouse-keys-3.2
       import: app/west.yml
+    - name: zmk-config
+      remote: ameeryaqoob
+      revision: main
+      import: boards/shields
   self:
     path: config
