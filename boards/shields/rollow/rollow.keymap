@@ -320,7 +320,7 @@ macros {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &to 1>
+                = <&macro_press &to 2>
                 , <&macro_pause_for_release>
                 , <&macro_press &to 0>;
          };
@@ -328,16 +328,26 @@ macros {
     keymap {
         compatible = "zmk,keymap";
         0 {
-            display-name = "ALPHA"; // 8 character max
+            display-name = "QWERTY"; // 8 character max
 bindings = <
-&kp Q &kp W &kp E &kp R &kp T                                          &kp Y &kp U &kp I &kp O &kp P
-&kp A &hr LALT S &hr LGUI D &hr LCTRL F &kp G                          &kp H &hr RCTRL J &hr RGUI K &hr RALT L &kp APOS
-&as LSHIFT Z &kp X &kp C &kp V &kp B                            &kp N &kp M &kp COMMA &kp DOT &as RSHIFT SLASH
-     &none &monavguitog 0 8 &spacemokptp 0 SPACE                        &mokphp 4 BSPC &mt LS(LG(LA(LCTRL))) RET &none
+&kp Q &kp W &kp E &kp R &kp T                                           &kp Y &kp U &kp I &kp O &kp P
+&as LSHIFT A &hr LALT S &hr LGUI D &hr LCTRL F &hr LS(LG(LA(LCTRL))) G  &hr LS(LG(LA(LCTRL))) H &hr RCTRL J &hr RGUI K &hr RALT L &as RSHIFT APOS
+&kp Z &kp X &kp C &kp V &kp B                                           &kp N &kp M &kp COMMA &kp DOT &kp SLASH
+     &none &mo 1 &kp SPACE                                              &kp BSPC &kp RET &none
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         1 {
+            display-name = "NUMERAL";
+bindings = <
+&kp N1 &kp N2 &kp N3 &kp N4 &kp N5                        &kp N6 &kp N7 &kp N8 &kp N9 &kp MINUS
+&kp GRAVE &hr LALT TAB &kp LGUI &kp LCTRL &kp CAPS        &kp EQUAL &hr RCTRL LBKT &hr RGUI RBKT &hr RALT SEMI &kp MINUS 
+&kp LSHIFT &none &none &none &none                        &none &kp BSLH &kp COMMA &kp DOT &kp RSHIFT
+&trans &kp SPACE &monavgui                    &kp RET &kp BSPC &trans
+              >;
+            sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
+        };
+        2 {
             display-name = "MOUSEII";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-1500) &none &kp RG(V) 
@@ -347,7 +357,7 @@ bindings = <
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
-        2 {
+        3 {
             display-name = "MOUSEI";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-500) &none &kp RG(V)  
@@ -357,7 +367,7 @@ bindings = <
               >;
             sensor-bindings = <&slow_x &slow_y>; //clockwise counterclockwise
         };
-        3 {
+        4 {
             display-name = "MOUSEIII";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R           &kp RG(X) &kp RG(C) &mmv MOVE_Y(-3000) &none &kp RG(V) 
@@ -366,16 +376,6 @@ bindings = <
             &trans &kp SPACE &monavgui        &mkp MB1 &mkp MB2 &trans 
               >;
             sensor-bindings = <&fast_x &fast_y>; //clockwise counterclockwise
-        };
-        4 {
-            display-name = "NUMERAL";
-bindings = <
-&kp N1 &kp N2 &kp N3 &kp N4 &kp N5                        &kp N6 &kp N7 &kp N8 &kp N9 &kp N0
-&kp GRAVE &hr LALT TAB &kp LGUI &kp LCTRL &kp CAPS        &kp EQUAL &hr RCTRL LBKT &hr RGUI RBKT &hr RALT SEMI &kp MINUS 
-&kp LSHIFT &none &none &none &none                        &none &kp BSLH &kp COMMA &kp DOT &kp RSHIFT
-&trans &kp SPACE &monavgui                    &kp RET &kp BSPC &trans
-              >;
-            sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         5 {
             display-name = "BLE";
