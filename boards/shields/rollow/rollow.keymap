@@ -1,5 +1,5 @@
-// west build -p -d build/left -b nice_nano_v2 -- -DSHIELD=rollow_left -DZMK_EXTRA_MODULES=/Users/test/zmk-config
-// west build -p -d build/right -b nice_nano_v2 -- -DSHIELD=rollow_right -DZMK_EXTRA_MODULES=/Users/test/zmk-config
+// sudo west build -p -d build/left -b nice_nano_v2 -- -DSHIELD=rollow_left -DZMK_EXTRA_MODULES=/Users/ameer/keyboard/zmk-config
+//sudo west build -p -d build/right -b nice_nano_v2 -- -DSHIELD=rollow_right -DZMK_EXTRA_MODULES=/Users/ameer/keyboard/zmk-config
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
