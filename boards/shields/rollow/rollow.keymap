@@ -13,11 +13,13 @@
     time-to-max-speed-ms = <300>;     
     delay-ms = <0>;                  
 };
-
 &msc {
     acceleration-exponent = <0>;    
     time-to-max-speed-ms = <0>;    
     delay-ms = <0>;                 
+};
+&caps_word {
+    continue-list = <UNDERSCORE MINUS BSPC>;
 };
 
 / {
@@ -27,13 +29,6 @@ combos {
             timeout-ms = <50>;
             key-positions = <0 9>;
             bindings = <&kp ESC>;
-            };
-        compatible = "zmk,combos";
-        combo_enter {
-            timeout-ms = <50>;
-            key-positions = <12 17>;
-            bindings = <&kp RETURN>;
-            layers = <0 1 2 3 6>;
             };
         compatible = "zmk,combos";
         combo_ble {
@@ -49,7 +44,7 @@ combos {
             };
         combo_minecraft {
             timeout-ms = <100>;
-            key-positions = <36 7 2>;
+            key-positions = <26 7 2>;
             bindings = <&to 5>;
             };
         compatible = "zmk,combos";
@@ -129,21 +124,14 @@ behaviors {
             quick-release;
             ignore-modifiers;
         };
-         capsmob: sticky_quick_release_moment {
+         moskq: moment_sticky_quick_release {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <150>;
             bindings = <&mo>, <&skq>;
         };  
-        td_capslock: td_capslock {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&capsmob 1 RSHIFT>, <&kp CAPS>;
-        };
 //----------------------ARROW MODS-------------------------
-        };
         left_backspace: left_backspace {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -362,9 +350,9 @@ macros {
             display-name = "ALPHAS"; // 8 character max
 bindings = <
 &kp Q &kp W &kp E &kp R &kp T                                           &kp Y &kp U &kp I &kp O &kp P
-&hr LS(LG(LA(LCTRL))) A &hr LALT S &hr LGUI D &hr LCTRL F &kp G         &kp H &hr RCTRL J &hr RGUI K &hr RALT L &hr LS(LG(LA(LCTRL))) APOS
+&hr LSHIFT A &hr LALT S &hr LGUI D &hr LCTRL F &hr LS(LG(LA(LCTRL))) G         &hr LS(LG(LA(LCTRL))) H &hr RCTRL J &hr RGUI K &hr RALT L &hr LSHIFT APOS
 &kp Z &kp X &kp C &kp V &kp B                                           &kp N &kp M &kp COMMA &kp DOT &kp SLASH
-&moto 2 2 &mousemokptp 0 TAB &mokpb 1 SPACE                             &kpkpb RSHIFT BSPC &mokphp 1 RETURN &kp RETURN
+&tog 2 &mousemokptp 0 TAB &mokpb 1 SPACE                             &kpkpb RSHIFT BSPC &mokphp 1 RETURN &caps_word
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
@@ -372,7 +360,7 @@ bindings = <
             display-name = "NUMPAD";
 bindings = <
 &kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &kp PERCENT                                &kp STAR &kp N7 &kp N8 &kp N9 &kp MINUS
-&hr LS(LG(LA(LCTRL))) CARET &hr LALT AMPS &hr LGUI LPAR &hr LCTRL RPAR &kp TILDE      &kp EQUAL &hr RCTRL N4 &hr RGUI N5 &hr RALT N6 &hr LS(LG(LA(LCTRL))) PLUS 
+&hr LSHIFT CARET &hr LALT AMPS &hr LGUI LPAR &hr LCTRL RPAR &hr LS(LG(LA(LCTRL))) TILDE      &hr LS(LG(LA(LCTRL))) EQUAL &hr RCTRL N4 &hr RGUI N5 &hr RALT N6 &hr LSHIFT PLUS 
 &kp COLON &kp BSLH &kp LBKT &kp RBKT &kp GRAVE                                         &kp UNDER &kp N1 &kp N2 &kp N3 &kp SEMI
 &kp LBRC &kp RBRC &kp PIPE                                                             &kp BSPC &kp RETURN &kp N0
               >;
@@ -381,10 +369,10 @@ bindings = <
         2 {
             display-name = "MOUSE";
 bindings = <
-&kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &none &kp LEFT &kp UP &kp RIGHT &kp DOWN
-&hr LS(LG(LA(LCTRL))) LG(N6) &hr LGUI LG(N7) &hr LALT LG(N8) &hr LCTRL LG(N9) &none   &msc MOVE_Y(-20) &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500) 
-&kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(RS(Z))                                 &msc MOVE_Y(20) &mkp MB4 &mkp MB3 &mkp MB5 &kp DEL 
-            &kp PG_UP &none &kp SPACE                                                 &mkp MB1 &mkp MB2 &kp PG_DN
+&kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &none &mkp MB4 &mkp MB3 &mkp MB5 &kp DEL 
+&hr LSHIFT LG(N6) &hr LGUI LG(N7) &hr LALT LG(N8) &hr LCTRL LG(N9) &kp LS(LG(LA(LCTRL))) &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500) 
+&kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(RS(Z))                                 &kp PG_DN &kp LEFT &kp UP &kp RIGHT &kp DOWN
+            &kp PG_UP &none &kp SPACE                                                 &mkp MB1 &msc MOVE_Y(20) &msc MOVE_Y(-20)
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
@@ -404,7 +392,7 @@ bindings = <
 &kp Q &kp W &kp E &kp R &kp T               &kp Y &kp U &kp I &kp O &kp P
 &kp A &kp S &kp D &kp F &kp G               &kp H &kp J &kp K &kp L &kp SEMI
 &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M &kp COMMA &kp DOT &kp SLASH
-&kp GRAVE &kp TAB &kp SPACE                 &kp RSHIFT &kp BSPC &kp RETURN
+&kp GRAVE &kp TAB &kp SPACE                 &kp N1 &kp APOS &kp RETURN
               >;
             sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
@@ -430,3 +418,4 @@ bindings = <
             };
         };
     };
+};
