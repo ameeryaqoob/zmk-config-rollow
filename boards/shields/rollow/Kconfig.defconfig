@@ -1,5 +1,5 @@
 
-if SHIELD_ROLLOW_RIGHT
+if SHIELD_ROLLOW_LEFT
 
 config ZMK_KEYBOARD_NAME
     default "gamer device 4"

@@ -8,20 +8,6 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-&mmv {
-    compatible = "zmk,behavior-mouse-move";
-    #binding-cells = <1>;
-    delay-ms = <0>;
-    time-to-max-speed-ms = <300>;
-    acceleration-exponent = <1>;                 
-};
-&msc {
-    compatible = "zmk,behavior-mouse-scroll";
-    #binding-cells = <1>;
-    delay-ms = <0>;
-    time-to-max-speed-ms = <600>;
-    acceleration-exponent = <0>;                
-};
 &caps_word {
     continue-list = <UNDERSCORE MINUS BSPC>;
 };
@@ -31,7 +17,7 @@ combos {
         compatible = "zmk,combos";
         combo_escape {
             timeout-ms = <50>;
-            key-positions = <13 16>;
+            key-positions = <31 34>;
             bindings = <&kp ESC>;
             };
         compatible = "zmk,combos";
@@ -54,12 +40,28 @@ combos {
         compatible = "zmk,combos";
         combo_out {
             timeout-ms = <50>;
-            key-positions = <12 17>;
+            key-positions = <30 35>;
             bindings = <&to 0>;
             layers = <0 1 2 3 4 7>;
             };
         };
 behaviors {    
+        msc: mouse_scroll {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_HWHEEL>;
+            y-input-code = <INPUT_REL_WHEEL>;
+            time-to-max-speed-ms = <300>;
+            acceleration-exponent = <0>;
+        };
+        mmv: mouse_move {
+            compatible = "zmk,behavior-input-two-axis";
+            #binding-cells = <1>;
+            x-input-code = <INPUT_REL_X>;
+            y-input-code = <INPUT_REL_Y>;
+            time-to-max-speed-ms = <300>;
+            acceleration-exponent = <1>;
+        };
         hr: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -392,7 +394,7 @@ macros {
     keymap {
         compatible = "zmk,keymap";
         0 {
-            display-name = "ALPHAS"; // 8 character max
+            display-name = "QWERTY"; // 8 character max
 bindings = <
 &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U &kp I &kp O &kp P
 &hr LSHIFT A &hr LALT S &hr LGUI D &hr LCTRL F &hr LS(LG(LA(LCTRL))) G       &hr LS(LG(LA(LCTRL))) H &hr RCTRL J &hr RGUI K &hr RALT L &hr LSHIFT APOS
@@ -407,17 +409,17 @@ bindings = <
 &kp GRAVE &kp PLUS &kp LBRC &kp RBRC &none                                                                         &kp CARET &kp LBKT &kp RBKT &kp LPAR &kp RPAR
 &hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI HASH &hr LCTRL DOLLAR &kp LS(LG(LA(LCTRL)))     &hr LS(LG(LA(LCTRL))) TILDE &hr RCTRL MINUS &hr RGUI UNDER &hr RALT COLON &hr LSHIFT SEMI 
 &none &none &none &none &none                                                                        &kp PERCENT &kp STAR &kp LT &kp GT &kp QUESTION
-&none &none &none                                                                                 &shiftbspcdel &kp RETURN &kp EQUAL
+&none &none &none                                                                                 &shiftbspcdel &kp AMPS &kp EQUAL
               >;
             sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         2 {
-            display-name = "NUMPAD";
+            display-name = "NUMERALS";
 bindings = <
-&kp STAR &kp N7 &kp N8 &kp N9 &kp MINUS                                                                                  &none &none &none &none &none
-&hr LSHIFT MINUS &hr LALT N4 &hr LGUI N5 &hr LCTRL N6 &hr LS(LG(LA(LCTRL))) PLUS           &kp LS(LG(LA(LCTRL))) &kp RCTRL &kp RGUI &kp RALT &hr LSHIFT APOS
-&kp SLASH &kp N1 &kp N2 &kp N3 &kp DOT                                                                                    &none &none &kp COMMA &kp DOT &kp SLASH
-&kp N0 &kp TAB &mokpb 1 SPACE                                                                                                       &shiftbspcdel &kp RETURN &none
+&none &none &none &none &none                                                                                &none &none &none &none &none
+&hr LSHIFT N1 &hr LALT N2 &hr LGUI N3 &hr LCTRL N4 &hr LS(LG(LA(LCTRL))) N5           &hr LS(LG(LA(LCTRL))) N6 &hr RCTRL N7 &hr RGUI N8 &hr RALT N9 &hr LSHIFT N0
+&none &none &none &none &none                                                                                  &none &none &kp COMMA &kp DOT &kp SLASH
+&none &kp TAB &mokpb 1 SPACE                                                                                                       &shiftbspcdel &mokphp 0 RETURN &none
               >;
             sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };

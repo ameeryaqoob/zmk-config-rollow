@@ -1,2 +1,0 @@
-config SHIELD_HANDWIRED
-    def_bool $(shields_list_contains,handwired)

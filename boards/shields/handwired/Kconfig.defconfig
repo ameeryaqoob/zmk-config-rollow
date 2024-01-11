@@ -1,6 +1,0 @@
-if SHIELD_HANDWIRED
-
-config ZMK_KEYBOARD_NAME
-    default "gamer device 7"
-
-endif
