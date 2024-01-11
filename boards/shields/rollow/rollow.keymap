@@ -9,14 +9,18 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 &mmv {
-    acceleration-exponent = <1>;    
-    time-to-max-speed-ms = <300>;     
-    delay-ms = <0>;                  
+    compatible = "zmk,behavior-mouse-move";
+    #binding-cells = <1>;
+    delay-ms = <0>;
+    time-to-max-speed-ms = <300>;
+    acceleration-exponent = <1>;                 
 };
 &msc {
-    acceleration-exponent = <0>;    
-    time-to-max-speed-ms = <0>;    
-    delay-ms = <0>;                 
+    compatible = "zmk,behavior-mouse-scroll";
+    #binding-cells = <1>;
+    delay-ms = <0>;
+    time-to-max-speed-ms = <600>;
+    acceleration-exponent = <0>;                
 };
 &caps_word {
     continue-list = <UNDERSCORE MINUS BSPC>;
@@ -27,7 +31,7 @@ combos {
         compatible = "zmk,combos";
         combo_escape {
             timeout-ms = <50>;
-            key-positions = <12 17>;
+            key-positions = <13 16>;
             bindings = <&kp ESC>;
             };
         compatible = "zmk,combos";
@@ -50,7 +54,7 @@ combos {
         compatible = "zmk,combos";
         combo_out {
             timeout-ms = <50>;
-            key-positions = <13 16>;
+            key-positions = <12 17>;
             bindings = <&to 0>;
             layers = <0 1 2 3 4 7>;
             };
@@ -64,12 +68,12 @@ behaviors {
             require-prior-idle-ms = <200>;
             bindings = <&kp>, <&kp>;
         };  
-        kpkpb: kpkpb {
+        kpkphp: kpkphp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping_term_ms = <200>;
             quick_tap_ms = <200>;
-            flavor = "balanced";
+            flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         }; 
          mousemokptp: mousemokptp {
@@ -133,19 +137,19 @@ behaviors {
         shiftbspcdel: shift_backspace_delete {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kpkpb RSHIFT BSPC>, <&kpkpb RSHIFT DEL>;
+            bindings = <&kpkphp RSHIFT BSPC>, <&kpkphp RSHIFT DEL>;
             mods = <(MOD_LSFT)>;
         };
         mod_scrl_dl: scroll_down_left {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&msc MOVE_Y(15)>, <&msc MOVE_X(15)>;
+            bindings = <&msc MOVE_Y(16)>, <&msc MOVE_X(16)>;
             mods = <(MOD_LSFT)>;
         };
         mod_scrl_ru: scroll_right_up {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&msc MOVE_Y(-15)>, <&msc MOVE_X(-15)>;
+            bindings = <&msc MOVE_Y(-16)>, <&msc MOVE_X(-16)>;
             mods = <(MOD_LSFT)>;
         };
         mod_mousel: mouse_left_boost {
@@ -400,9 +404,9 @@ bindings = <
         1 {
             display-name = "SYMBOLS";
 bindings = <
-&kp GRAVE &kp HASH &kp RBRC &kp LBRC &none                                                                         &kp CARET &kp LBKT &kp RBKT &kp STAR &kp PERCENT
-&hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI UNDER &hr LCTRL MINUS &kp LS(LG(LA(LCTRL)))     &hr LS(LG(LA(LCTRL))) TILDE &hr RCTRL LPAR &hr RGUI RPAR &hr RALT COLON &hr LSHIFT SEMI 
-&none &none &none &none &none                                                                        &kp PLUS &kp DOLLAR &kp LT &kp GT &kp QUESTION
+&kp GRAVE &kp PLUS &kp LBRC &kp RBRC &none                                                                         &kp CARET &kp LBKT &kp RBKT &kp LPAR &kp RPAR
+&hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI HASH &hr LCTRL DOLLAR &kp LS(LG(LA(LCTRL)))     &hr LS(LG(LA(LCTRL))) TILDE &hr RCTRL MINUS &hr RGUI UNDER &hr RALT COLON &hr LSHIFT SEMI 
+&none &none &none &none &none                                                                        &kp PERCENT &kp STAR &kp LT &kp GT &kp QUESTION
 &none &none &none                                                                                 &shiftbspcdel &kp RETURN &kp EQUAL
               >;
             sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
