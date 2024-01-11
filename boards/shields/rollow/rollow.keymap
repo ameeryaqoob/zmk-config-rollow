@@ -1,4 +1,4 @@
-// sudo west build -p -d build/left -b nice_nano_v2 -- -DSHIELD=rollow_left -DZMK_EXTRA_MODULES=/Users/ameer/keyboard/zmk-config
+//sudo west build -p -d build/left -b nice_nano_v2 -- -DSHIELD=rollow_left -DZMK_EXTRA_MODULES=/Users/ameer/keyboard/zmk-config
 //sudo west build -p -d build/right -b nice_nano_v2 -- -DSHIELD=rollow_right -DZMK_EXTRA_MODULES=/Users/ameer/keyboard/zmk-config
 
 #include <behaviors.dtsi>
@@ -27,32 +27,32 @@ combos {
         compatible = "zmk,combos";
         combo_escape {
             timeout-ms = <50>;
-            key-positions = <0 9>;
+            key-positions = <12 17>;
             bindings = <&kp ESC>;
             };
         compatible = "zmk,combos";
         combo_ble {
             timeout-ms = <50>;
             key-positions = <4 24>;
-            bindings = <&to 3>;
+            bindings = <&to 4>;
             };
         compatible = "zmk,combos";
         combo_gaem {
             timeout-ms = <100>;
             key-positions = <2 10 14 26>;
-            bindings = <&to 4>;
+            bindings = <&to 5>;
             };
         combo_minecraft {
             timeout-ms = <100>;
             key-positions = <26 7 2>;
-            bindings = <&to 5>;
+            bindings = <&to 6>;
             };
         compatible = "zmk,combos";
         combo_out {
             timeout-ms = <50>;
             key-positions = <13 16>;
             bindings = <&to 0>;
-            layers = <0 1 2 3 6>;
+            layers = <0 1 2 3 4 7>;
             };
         };
 behaviors {    
@@ -98,7 +98,6 @@ behaviors {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            quick-tap-ms = <200>;
             tapping-term-ms = <200>;
             bindings = <&mo>, <&kp>;
         };  
@@ -131,6 +130,48 @@ behaviors {
             tapping-term-ms = <150>;
             bindings = <&mo>, <&skq>;
         };  
+        shiftbspcdel: shift_backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kpkpb RSHIFT BSPC>, <&kpkpb RSHIFT DEL>;
+            mods = <(MOD_LSFT)>;
+        };
+        mod_scrl_dl: scroll_down_left {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&msc MOVE_Y(15)>, <&msc MOVE_X(15)>;
+            mods = <(MOD_LSFT)>;
+        };
+        mod_scrl_ru: scroll_right_up {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&msc MOVE_Y(-15)>, <&msc MOVE_X(-15)>;
+            mods = <(MOD_LSFT)>;
+        };
+        mod_mousel: mouse_left_boost {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_X(-1500)>, <&mmv MOVE_X(-3000)>;
+            mods = <(MOD_LSFT)>;
+        };
+        mod_mouser: mouse_right_boost {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_X(1500)>, <&mmv MOVE_X(3000)>;
+            mods = <(MOD_LSFT)>;
+        };
+        mod_mouseu: mouse_up_boost {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_Y(-1500)>, <&mmv MOVE_Y(-3000)>;
+            mods = <(MOD_LSFT)>;
+        };
+        mod_moused: mouse_down_boost {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&mmv MOVE_Y(1500)>, <&mmv MOVE_Y(3000)>;
+            mods = <(MOD_LSFT)>;
+        };
 //----------------------ARROW MODS-------------------------
         left_backspace: left_backspace {
             compatible = "zmk,behavior-mod-morph";
@@ -349,34 +390,44 @@ macros {
         0 {
             display-name = "ALPHAS"; // 8 character max
 bindings = <
-&kp Q &kp W &kp E &kp R &kp T                                           &kp Y &kp U &kp I &kp O &kp P
-&hr LSHIFT A &hr LALT S &hr LGUI D &hr LCTRL F &hr LS(LG(LA(LCTRL))) G         &hr LS(LG(LA(LCTRL))) H &hr RCTRL J &hr RGUI K &hr RALT L &hr LSHIFT APOS
-&kp Z &kp X &kp C &kp V &kp B                                           &kp N &kp M &kp COMMA &kp DOT &kp SLASH
-&tog 2 &mousemokptp 0 TAB &mokpb 1 SPACE                             &kpkpb RSHIFT BSPC &mokphp 1 RETURN &caps_word
+&kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U &kp I &kp O &kp P
+&hr LSHIFT A &hr LALT S &hr LGUI D &hr LCTRL F &hr LS(LG(LA(LCTRL))) G       &hr LS(LG(LA(LCTRL))) H &hr RCTRL J &hr RGUI K &hr RALT L &hr LSHIFT APOS
+&kp Z &kp X &kp C &kp V &kp B                                                &kp N &kp M &kp COMMA &kp DOT &kp SLASH
+&tog 2 &mokphp 3 TAB &mokpb 1 SPACE                                     &shiftbspcdel &mokphp 2 RETURN &caps_word
               >;
             sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         1 {
-            display-name = "NUMPAD";
+            display-name = "SYMBOLS";
 bindings = <
-&kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &kp PERCENT                                &kp STAR &kp N7 &kp N8 &kp N9 &kp MINUS
-&hr LSHIFT CARET &hr LALT AMPS &hr LGUI LPAR &hr LCTRL RPAR &hr LS(LG(LA(LCTRL))) TILDE      &hr LS(LG(LA(LCTRL))) EQUAL &hr RCTRL N4 &hr RGUI N5 &hr RALT N6 &hr LSHIFT PLUS 
-&kp COLON &kp BSLH &kp LBKT &kp RBKT &kp GRAVE                                         &kp UNDER &kp N1 &kp N2 &kp N3 &kp SEMI
-&kp LBRC &kp RBRC &kp PIPE                                                             &kp BSPC &kp RETURN &kp N0
+&kp GRAVE &kp HASH &kp RBRC &kp LBRC &none                                                                         &kp CARET &kp LBKT &kp RBKT &kp STAR &kp PERCENT
+&hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI UNDER &hr LCTRL MINUS &kp LS(LG(LA(LCTRL)))     &hr LS(LG(LA(LCTRL))) TILDE &hr RCTRL LPAR &hr RGUI RPAR &hr RALT COLON &hr LSHIFT SEMI 
+&none &none &none &none &none                                                                        &kp PLUS &kp DOLLAR &kp LT &kp GT &kp QUESTION
+&none &none &none                                                                                 &shiftbspcdel &kp RETURN &kp EQUAL
               >;
             sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         2 {
+            display-name = "NUMPAD";
+bindings = <
+&kp STAR &kp N7 &kp N8 &kp N9 &kp MINUS                                                                                  &none &none &none &none &none
+&hr LSHIFT MINUS &hr LALT N4 &hr LGUI N5 &hr LCTRL N6 &hr LS(LG(LA(LCTRL))) PLUS           &kp LS(LG(LA(LCTRL))) &kp RCTRL &kp RGUI &kp RALT &hr LSHIFT APOS
+&kp SLASH &kp N1 &kp N2 &kp N3 &kp DOT                                                                                    &none &none &kp COMMA &kp DOT &kp SLASH
+&kp N0 &kp TAB &mokpb 1 SPACE                                                                                                       &shiftbspcdel &kp RETURN &none
+              >;
+            sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
+        };
+        3 {
             display-name = "MOUSE";
 bindings = <
-&kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &none &mkp MB4 &mkp MB3 &mkp MB5 &kp DEL 
-&hr LSHIFT LG(N6) &hr LGUI LG(N7) &hr LALT LG(N8) &hr LCTRL LG(N9) &kp LS(LG(LA(LCTRL))) &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500) 
+&kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &none &mkp MB4 &mkp MB3 &mkp MB5 &mkp MB2
+&hr LSHIFT LG(N6) &hr LALT LG(N7) &hr LGUI LG(N8) &hr LCTRL LG(N9) &kp LS(LG(LA(LCTRL))) &kp PG_UP &mod_mousel &mod_mouseu &mod_mouser &mod_moused 
 &kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(RS(Z))                                 &kp PG_DN &kp LEFT &kp UP &kp RIGHT &kp DOWN
-            &kp PG_UP &none &kp SPACE                                                 &mkp MB1 &msc MOVE_Y(20) &msc MOVE_Y(-20)
+            &kp PG_UP &none &kp SPACE                                                 &mkp MB1 &mod_scrl_dl &mod_scrl_ru
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
-        3 {
+        4 {
             display-name = "BLE";
 bindings = <
 &bt BT_CLR &none &none &none &none      &none &none &none &none &out OUT_TOG
@@ -386,7 +437,7 @@ bindings = <
               >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>; //clockwise counterclockwise
         };
-        4 {
+        5 {
             display-name = "GAEM"; // 8 character max
 bindings = <
 &kp Q &kp W &kp E &kp R &kp T               &kp Y &kp U &kp I &kp O &kp P
@@ -394,19 +445,19 @@ bindings = <
 &kp Z &kp X &kp C &kp V &kp B               &kp N &kp M &kp COMMA &kp DOT &kp SLASH
 &kp GRAVE &kp TAB &kp SPACE                 &kp N1 &kp APOS &kp RETURN
               >;
-            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>; //clockwise counterclockwise
+            sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp DOWN UP>;
         };
-        5 {
+        6 {
             display-name = "MINECRFT";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R                               &kp RG(RS(Z)) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(Z)
-&kp LSHIFT &kp A &kp S &kp D &kp F                          &msc MOVE_Y(-10) &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500)
+&kp LSHIFT &kp A &kp S &kp D &kp F                          &msc MOVE_Y(-10) &mod_mousel &mod_mouseu &mod_mouser &mod_moused 
 &kp Z &kp X &kp C &kp V &kp B                               &msc MOVE_Y(10) &mkp MB4 &mkp MB3 &mkp MB5 &kp DEL 
             &kp PG_UP &none &kp SPACE                      &mkp MB1 &mkp MB2 &kp PG_DN
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
-        6 {
+        7 {
             display-name = "FUNCTION";
 bindings = <
 &kp F1 &kp F2 &kp F3 &kp F4 &kp F5           &kp F6 &kp F7 &kp F8 &kp F9 &kp F10
