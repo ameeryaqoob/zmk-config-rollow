@@ -104,7 +104,7 @@ behaviors {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <150>;
             bindings = <&mo>, <&kp>;
         };  
          monavguitog: monavguitog {
