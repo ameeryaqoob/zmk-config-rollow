@@ -439,7 +439,7 @@ bindings = <
 &bt BT_CLR_ALL &none &none &none &none                              &none &none &none &none &out OUT_BLE
 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4  
 &bt BT_CLR &none &none &none &none                                 &none &none &none &none &out OUT_USB 
-            &none &none &bt BT_PRV                                &bt BT_NXT &none &none
+            &none &ext_power EP_OFF &bt BT_PRV                                &bt BT_NXT &ext_power EP_ON &none
               >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>; //clockwise counterclockwise
         };
