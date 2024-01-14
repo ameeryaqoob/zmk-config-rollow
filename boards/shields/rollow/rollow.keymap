@@ -456,9 +456,9 @@ bindings = <
             display-name = "MINECRFT";
 bindings = <
 &kp GRAVE &kp Q &kp W &kp E &kp R                               &kp RG(RS(Z)) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(Z)
-&kp LSHIFT &kp A &kp S &kp D &kp F                          &msc MOVE_Y(-10) &mod_mousel &mod_mouseu &mod_mouser &mod_moused 
-&kp Z &kp X &kp C &kp V &kp B                               &msc MOVE_Y(10) &mkp MB4 &mkp MB3 &mkp MB5 &kp DEL 
-            &kp PG_UP &none &kp SPACE                      &mkp MB1 &mkp MB2 &kp PG_DN
+&kp LSHIFT &kp A &kp S &kp D &kp F                          &none &mod_mousel &mod_mouseu &mod_mouser &mod_moused 
+&kp Z &kp X &kp C &kp V &kp B                               &none &mkp MB4 &mkp MB3 &mkp MB5 &none 
+            &kp PG_UP &mo 2 &kp SPACE                      &mkp MB1 &mkp MB2 &kp PG_DN
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
         };
