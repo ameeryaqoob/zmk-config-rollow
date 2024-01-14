@@ -21,12 +21,6 @@ combos {
             bindings = <&kp ESC>;
             };
         compatible = "zmk,combos";
-        combo_right_click {
-            timeout-ms = <50>;
-            key-positions = <31 34>;
-            bindings = <&kp ESC>;
-            };
-        compatible = "zmk,combos";
         combo_ble {
             timeout-ms = <50>;
             key-positions = <4 24>;
@@ -411,10 +405,10 @@ bindings = <
         1 {
             display-name = "SYMBOLS";
 bindings = <
-&kp GRAVE &kp PLUS &kp LBRC &kp RBRC &none                                                                         &kp CARET &kp LBKT &kp RBKT &kp LPAR &kp RPAR
-&hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI HASH &hr LCTRL DOLLAR &kp LS(LG(LA(LCTRL)))     &hr LS(LG(LA(LCTRL))) TILDE &hr RCTRL MINUS &hr RGUI UNDER &hr RALT COLON &hr LSHIFT SEMI 
-&none &none &none &none &none                                                                        &kp PERCENT &kp STAR &kp LT &kp GT &kp QUESTION
-&none &none &none                                                                                 &shiftbspcdel &kp AMPS &kp EQUAL
+&kp GRAVE &kp PLUS &kp LBRC &kp RBRC &none                                                                         &none &kp LBKT &kp RBKT &kp LPAR &kp RPAR
+&hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI HASH &hr LCTRL DOLLAR &kp LS(LG(LA(LCTRL)))     &kp LS(LG(LA(LCTRL))) &hr RCTRL MINUS &hr RGUI UNDER &hr RALT COLON &hr LSHIFT SEMI 
+&kp PERCENT &kp CARET &kp AMPS &kp STAR &none                                                                        &none &kp EQUAL &kp LT &kp GT &kp QUESTION
+&none &none &none                                                                                 &shiftbspcdel &kp TILDE &none
               >;
             sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
@@ -431,9 +425,9 @@ bindings = <
         3 {
             display-name = "MOUSE";
 bindings = <
-&kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &none &mkp MB4 &mkp MB3 &mkp MB5 &mkp MB2
+&kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &none &kp LEFT &kp UP &kp RIGHT &kp DOWN
 &hr LSHIFT LG(N6) &hr LALT LG(N7) &hr LGUI LG(N8) &hr LCTRL LG(N9) &kp LS(LG(LA(LCTRL))) &kp PG_UP &mod_mousel &mod_mouseu &mod_mouser &mod_moused 
-&kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(RS(Z))                                 &kp PG_DN &kp LEFT &kp UP &kp RIGHT &kp DOWN
+&kp RG(Z) &kp RG(X) &kp RG(C) &kp RG(V) &kp RG(RS(Z))                                 &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &mkp MB2
             &kp PG_UP &mkp MB2 &kp SPACE                                                 &mkp MB1 &mod_scrl_dl &mod_scrl_ru
               >;
             sensor-bindings = <&med_x &med_y>; //clockwise counterclockwise
