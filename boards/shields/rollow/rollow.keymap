@@ -399,9 +399,9 @@ bindings = <
         1 {
             display-name = "SYMBOLS";
 bindings = <
-&kp GRAVE &kp PLUS &kp LBRC &kp RBRC &none                                                                         &none &kp LBKT &kp RBKT &kp LPAR &kp RPAR
-&hr LSHIFT EXCLAMATION &hr LALT AT &hr LGUI HASH &hr LCTRL DOLLAR &kp LS(LG(LA(LCTRL)))     &kp LS(LG(LA(LCTRL))) &hr RCTRL MINUS &hr RGUI UNDER &hr RALT COLON &hr LSHIFT SEMI 
-&kp PERCENT &kp CARET &kp AMPS &kp STAR &none                                                                        &none &kp EQUAL &kp LT &kp GT &kp QUESTION
+&none &none &none &none &none                                                                          &none &kp LBKT &kp RBKT &kp LPAR &kp RPAR
+&hr LSHIFT GRAVE &hr LALT PLUS &hr LGUI LBRC &hr LCTRL RBRC &kp LS(LG(LA(LCTRL)))     &kp LS(LG(LA(LCTRL))) &hr RCTRL MINUS &hr RGUI UNDER &hr RALT COLON &hr LSHIFT SEMI 
+&none &none &none &none &none                                                          &none &kp EQUAL &kp LT &kp GT &kp QUESTION
 &none &none &none                                                                                 &shiftbspcdel &kp TILDE &none
               >;
             sensor-bindings = <&inc_dec_kp DEL BSPC &inc_dec_kp DOWN UP>; //clockwise counterclockwise
@@ -409,7 +409,7 @@ bindings = <
         2 {
             display-name = "NUMERALS";
 bindings = <
-&none &none &none &none &none                                                                                &none &none &none &none &none
+&kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &none                                                   &none &kp PERCENT &kp CARET &kp AMPS &kp STAR
 &hr LSHIFT N1 &hr LALT N2 &hr LGUI N3 &hr LCTRL N4 &hr LS(LG(LA(LCTRL))) N5           &hr LS(LG(LA(LCTRL))) N6 &hr RCTRL N7 &hr RGUI N8 &hr RALT N9 &hr LSHIFT N0
 &none &none &none &none &none                                                                                  &none &none &kp COMMA &kp DOT &kp SLASH
 &none &kp TAB &mokpb 1 SPACE                                                                                                       &shiftbspcdel &mokphp 0 RETURN &none
@@ -431,7 +431,7 @@ bindings = <
 bindings = <
 &bt BT_CLR_ALL &kp K_MUTE &kp C_VOL_DN &kp C_VOL_UP &none                              &none &kp C_BRI_DN &kp C_BRI_UP &none &out OUT_BLE
 &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4  
-&bt BT_CLR &none &none &none &none                                 &none &none &none &none &out OUT_USB 
+&bt BT_CLR &none &none &none &to 0                                 &none &none &none &none &out OUT_USB 
             &none &ext_power EP_OFF &bt BT_PRV                                &bt BT_NXT &ext_power EP_ON &none
               >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>; //clockwise counterclockwise
