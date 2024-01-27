@@ -108,7 +108,7 @@ bindings = <
               >;
         };
         1 {
-            display-name = "COLEMAK DH";
+            display-name = "COLMAK";
             bindings = <
 &none  &kp Q  &kp W  &kp F     &kp P      &kp B     &kp J     &kp L     &kp U      &kp Y    &kp APOS   &none
 &none &hr LCTRL A &hr LALT R &hr LGUI S &hr LSHIFT T &hr LS(LG(LA(LCTRL))) G       &hr LS(LG(LA(LCTRL))) M &hr RSHIFT N &hr RGUI E &hr RALT I &hr RCTRL O &none 
@@ -117,7 +117,7 @@ bindings = <
             >;
         };
         2 {
-            display-name = "NUM/SYM";
+            display-name = "NUMBER";
 bindings = <
 &none &kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &kp PERCENT                                                                   &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &none 
 &none &hr LCTRL N1 &hr LALT N2 &hr LGUI N3 &hr LSHIFT N4 &hr LS(LG(LA(LCTRL))) N5           &hr LS(LG(LA(LCTRL))) N6 &hr RSHIFT N7 &hr RGUI N8 &hr RALT N9 &hr RCTRL N0 &none 
@@ -153,7 +153,7 @@ bindings = <
               >;
         };
         6 {
-            display-name = "MINECRFT";
+            display-name = "CRAFT";
 bindings = <
 &none &mt ESC GRAVE &kp Q &kp W &kp E &kp R                              &none &none &none &none &none &none 
 &none &kp LSHIFT &kp A &kp S &kp D &kp F                         &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500) &none 
@@ -162,7 +162,7 @@ bindings = <
               >;  
         };
         7 {
-            display-name = "FUNCTION";
+            display-name = "FUNC";
 bindings = <
 &none &kp F1 &kp F2 &kp F3 &kp F4 &kp F5                          &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &none 
 &none &hr LSHIFT F11 &hr LALT F12 &hr LGUI F13 &hr LCTRL F14 &hr LS(LG(LA(LCTRL))) F15 &hr LS(LG(LA(LCTRL))) F16 &hr RCTRL F17 &hr RGUI F18 &hr RALT F19 &hr LSHIFT F20 &none 
