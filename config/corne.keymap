@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 &caps_word {
-    continue-list = <UNDERSCORE MINUS BSPC>;
+    continue-list = <UNDERSCORE MINUS BSPC DOT COMMA>;
 };
 &sl {
     release-after-ms = <1000>;
@@ -32,12 +32,21 @@ behaviors {
             time-to-max-speed-ms = <300>;
             acceleration-exponent = <1>;
         };
-        hr: homerow_mods {
+        hrl: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <150>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
             bindings = <&kp>, <&kp>;
+            //hold-trigger-key-positions = <6 7 8 9 10 18 19 20 21 22 30 31 32 33 34 39 40 41>;
+        };
+        hrr: homerow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
+            bindings = <&kp>, <&kp>;
+            //hold-trigger-key-positions = <1 2 3 4 5 13 14 15 16 17 25 26 27 28 29 38 37 36>;
         };  
          monumkphp: mo_numerals_kphp {
             compatible = "zmk,behavior-hold-tap";
@@ -102,35 +111,35 @@ behaviors {
             display-name = "QWERTY"; // 8 character max
 bindings = <
 &none &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U &kp I &kp O &kp P &none 
-&none &hr LCTRL A &hr LALT S &hr LGUI D &hr LSHIFT F &hr LS(LG(LA(LCTRL))) G       &hr LS(LG(LA(LCTRL))) H &hr RSHIFT J &hr RGUI K &hr RALT L &hr RCTRL APOS &none 
-&none &hr GLOBE Z &kp X &kp C &kp V &kp B                                          &kp N &kp M &kp COMMA &kp DOT &hr GLOBE SLASH &none
-&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 9 RETURN &mokphp 2 BSPC &mokptp 7 DEL
+&none &hrl LCTRL A &hrl LALT S &hrl LGUI D &hrl LSHIFT F &hrl LS(LG(LA(LCTRL))) G       &hrr LS(LG(LA(LCTRL))) H &hrr RSHIFT J &hrr RGUI K &hrr RALT L &hrr RCTRL APOS &none 
+&none &hrl GLOBE Z &kp X &kp C &kp V &kp B                                          &kp N &kp M &kp COMMA &kp DOT &hrr GLOBE SLASH &none
+&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 10 RETURN &mokphp 2 BSPC &mokptp 7 DEL
               >;
         };
         1 {
-            display-name = "COLEMAK DH";
+            display-name = "COL DH";
             bindings = <
 &none  &kp Q  &kp W  &kp F     &kp P      &kp B     &kp J     &kp L     &kp U      &kp Y    &kp APOS   &none
-&none &hr LCTRL A &hr LALT R &hr LGUI S &hr LSHIFT T &hr LS(LG(LA(LCTRL))) G       &hr LS(LG(LA(LCTRL))) M &hr RSHIFT N &hr RGUI E &hr RALT I &hr RCTRL O &none 
-&none  &hr GLOBE Z  &kp X  &kp C   &kp D      &kp V     &kp K     &kp H     &kp COMMA  &kp DOT  &hr GLOBE SLASH  &none
-&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 9 RETURN &mokphp 2 BSPC &mokptp 7 DEL
+&none &hrl LCTRL A &hrl LALT R &hrl LGUI S &hrl LSHIFT T &hrl LS(LG(LA(LCTRL))) G       &hrr LS(LG(LA(LCTRL))) M &hrr RSHIFT N &hrr RGUI E &hrr RALT I &hrr RCTRL O &none 
+&none  &hrl GLOBE Z  &kp X  &kp C   &kp D      &kp V     &kp K     &kp H     &kp COMMA  &kp DOT  &hrr GLOBE SLASH  &none
+&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 10 RETURN &mokphp 2 BSPC &mokptp 7 DEL
             >;
         };
         2 {
-            display-name = "NUM/SYM";
+            display-name = "NUM";
 bindings = <
 &none &kp EXCLAMATION &kp AT &kp HASH &kp DOLLAR &kp PERCENT                                                                   &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &none 
-&none &hr LCTRL N1 &hr LALT N2 &hr LGUI N3 &hr LSHIFT N4 &hr LS(LG(LA(LCTRL))) N5           &hr LS(LG(LA(LCTRL))) N6 &hr RSHIFT N7 &hr RGUI N8 &hr RALT N9 &hr RCTRL N0 &none 
-&none &hr GLOBE GRAVE &kp LBKT &kp RBKT &kp EQUAL &kp BSLH                                                               &kp PIPE &kp UNDER &kp PLUS &kp LBRC &hr GLOBE RBRC &none 
+&none &hrl LCTRL N1 &hrl LALT N2 &hrl LGUI N3 &hrl LSHIFT N4 &hrl LS(LG(LA(LCTRL))) N5           &hrr LS(LG(LA(LCTRL))) N6 &hrr RSHIFT N7 &hrr RGUI N8 &hrr RALT N9 &hrr RCTRL N0 &none 
+&none &hrl GLOBE GRAVE &kp LBKT &kp RBKT &kp EQUAL &kp BSLH                                                               &kp PIPE &kp UNDER &kp COMMA  &kp DOT  &hrr GLOBE SLASH  &none
 &kp MINUS &kp SPACE &kp SEMI                                                                                               &none &to 0 &kp TILDE
               >;
         };  
         3 {
             display-name = "MOUSE";
 bindings = <
-&none &kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &mkp MB2 &kp LEFT &kp UP &kp RIGHT &kp DOWN &none 
-&none &hr LCTRL LG(N6) &hr LALT LG(N7) &hr LGUI LG(N8) &hr LSHIFT LG(N9) &kp LS(LG(LA(LCTRL))) &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500) &none 
-&none &kp GLOBE &none &none &none &none                                  &kp PG_DN &msc MOVE_X(16) &msc MOVE_Y(-16) &msc MOVE_X(-16) &msc MOVE_Y(16) &none 
+&none &kp LG(N1) &kp LG(N2) &kp LG(N3) &kp LG(N4) &kp LG(N5)                                &mkp MB2 &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
+&none &hrl LCTRL LG(N6) &hrl LALT LG(N7) &hrl LGUI LG(N8) &hrl LSHIFT LG(N9) &kp LS(LG(LA(LCTRL))) &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &none
+&none &kp GLOBE &none &none &none &none                                  &kp PG_DN &msc MOVE_X(16) &msc MOVE_Y(16) &msc MOVE_Y(-16) &msc MOVE_X(-16) &none 
 &none &none &to 0                                               &down &mkp MB1 &up
               >;
         };
@@ -153,20 +162,20 @@ bindings = <
               >;
         };
         6 {
-            display-name = "MINECRFT";
+            display-name = "CRAFT";
 bindings = <
 &none &mt ESC GRAVE &kp Q &kp W &kp E &kp R                              &none &none &none &none &none &none 
-&none &kp LSHIFT &kp A &kp S &kp D &kp F                         &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &mmv MOVE_Y(1500) &none 
+&none &kp LSHIFT &kp A &kp S &kp D &kp F                         &kp PG_UP &mmv MOVE_X(-1500) &mmv MOVE_Y(1500) &mmv MOVE_Y(-1500) &mmv MOVE_X(1500) &none 
 &none &kp Z &kp X &kp C &kp V &kp B                               &kp PG_DN &mkp MB4 &mkp MB3 &mkp MB5 &sl 5 &none 
 &to 0 &kp SPACE &none                                          &monumkphp 0 MB2 &mkp MB1 &sl 7
               >;  
         };
         7 {
-            display-name = "FUNCTION";
+            display-name = "FUNC";
 bindings = <
 &none &kp F1 &kp F2 &kp F3 &kp F4 &kp F5                          &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &none 
-&none &hr LSHIFT F11 &hr LALT F12 &hr LGUI F13 &hr LCTRL F14 &hr LS(LG(LA(LCTRL))) F15 &hr LS(LG(LA(LCTRL))) F16 &hr RCTRL F17 &hr RGUI F18 &hr RALT F19 &hr LSHIFT F20 &none 
-&none &hr GLOBE F21 &kp F22 &kp F23 &kp F24 &none                &none &none &none &none &kp GLOBE &none 
+&none &hrl LSHIFT F11 &hrl LALT F12 &hrl LGUI F13 &hrl LCTRL F14 &hrl LS(LG(LA(LCTRL))) F15 &hrr LS(LG(LA(LCTRL))) F16 &hrr RCTRL F17 &hrr RGUI F18 &hrr RALT F19 &hrr LSHIFT F20 &none 
+&none &hrl GLOBE F21 &kp F22 &kp F23 &kp F24 &none                &bootloader &none &none &none &kp GLOBE &none 
       &kp PAUSE_BREAK &kp PSCRN &kp SCROLLLOCK                                          &none &none &to 0
               >;
             };
@@ -174,15 +183,24 @@ bindings = <
             display-name = "ARROWS";
 bindings = <
 &none &kp ESC &none &none &none &none                             &kp LG(LS(Z)) &kp LG(C) &kp LG(X) &kp LG(V) &kp LG(Z) &none 
-&none &kp LCTRL &kp LALT &kp LGUI &kp LSHIFT &kp LS(LG(LA(LCTRL)))  &kp PG_UP &kp LEFT &kp UP &kp RIGHT &kp DOWN &none 
+&none &kp LCTRL &kp LALT &kp LGUI &kp LSHIFT &kp LS(LG(LA(LCTRL)))  &kp PG_UP &kp LEFT &kp DOWN &kp UP &kp RIGHT &none 
 &none &kp GLOBE &none &none &none &none               &kp PG_DN &kp HOME &kp INS &kp END &none &none 
       &none &to 0 &none                                          &kp RETURN &kp BSPC &kp DEL
               >;
             };
         9 {
-            display-name = "STICKY";
+            display-name = "PLOVER";
 bindings = <
 &none &to 0 &none &none &none &none                             &none &none &none &none &to 1 &none
+&none &none &none &none &none &none                             &none &none &none &none &none &none
+&none &none &none &to 5 &none &none                             &none &to 6 &none &none &none &none
+      &to 4 &to 8 &to 3                                          &none &to 2 &to 7
+              >;
+            };
+        10 {
+            display-name = "STENO";
+bindings = <
+&none &kp S &kp T &kp P &kp H &kp STAR                            &kp F &kp P &kp L &kp T &kp D &none
 &none &none &none &none &none &none                             &none &none &none &none &none &none
 &none &none &none &to 5 &none &none                             &none &to 6 &none &none &none &none
       &to 4 &to 8 &to 3                                          &none &to 2 &to 7

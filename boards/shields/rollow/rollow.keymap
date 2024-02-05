@@ -376,7 +376,7 @@ bindings = <
 &kp Z &kp X &kp C &kp V &kp B                                                &kp N &kp M &kp COMMA &kp DOT &kp SLASH
 &to 6 &mokphp 3 TAB &mokpb 1 SPACE                                     &shiftbspcdel &mokphp 2 RETURN &to 5
               >;
-            sensor-bindings = <&arrow_mods &inc_dec_kp DOWN UP>; //clockwise counterclockwise
+            sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp DOWN UP>; //clockwise counterclockwise
         };
         1 {
             display-name = "SYMBOLS";
