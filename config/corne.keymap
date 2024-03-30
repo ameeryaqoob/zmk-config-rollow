@@ -4,6 +4,8 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <behaviors/mouse_keys.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
@@ -24,6 +26,10 @@ behaviors {
             time-to-max-speed-ms = <300>;
             acceleration-exponent = <0>;
         };
+        msc_input_listener {
+            compatible = "zmk,input-listener";
+            device = <&msc>;
+         };
         mmv: mouse_move {
             compatible = "zmk,behavior-input-two-axis";
             #binding-cells = <1>;
@@ -32,7 +38,19 @@ behaviors {
             time-to-max-speed-ms = <300>;
             acceleration-exponent = <1>;
         };
-        hrl: homerow_mods_left {
+        mmv_input_listener {
+            compatible = "zmk,input-listener";
+            device = <&mmv>;
+        };
+        mouse_key_press {
+            compatible = "zmk,behavior-mouse-key-press";
+            #binding-cells = <1>;
+        };
+        mkp_input_listener {
+            compatible = "zmk,input-listener";
+            device = <&mkp>;
+        };
+            hrl: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
@@ -113,7 +131,7 @@ bindings = <
 &none &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U &kp I &kp O &kp P &none 
 &none &hrl LCTRL A &hrl LALT S &hrl LGUI D &hrl LSHIFT F &hrl LS(LG(LA(LCTRL))) G       &hrr LS(LG(LA(LCTRL))) H &hrr RSHIFT J &hrr RGUI K &hrr RALT L &hrr RCTRL APOS &none 
 &none &hrl GLOBE Z &kp X &kp C &kp V &kp B                                          &kp N &kp M &kp COMMA &kp DOT &hrr GLOBE SLASH &none
-&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 10 RETURN &mokphp 2 BSPC &mokptp 7 DEL
+&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 9 RETURN &mokphp 2 BSPC &mokptp 7 DEL
               >;
         };
         1 {
@@ -122,7 +140,7 @@ bindings = <
 &none  &kp Q  &kp W  &kp F     &kp P      &kp B     &kp J     &kp L     &kp U      &kp Y    &kp APOS   &none
 &none &hrl LCTRL A &hrl LALT R &hrl LGUI S &hrl LSHIFT T &hrl LS(LG(LA(LCTRL))) G       &hrr LS(LG(LA(LCTRL))) M &hrr RSHIFT N &hrr RGUI E &hrr RALT I &hrr RCTRL O &none 
 &none  &hrl GLOBE Z  &kp X  &kp C   &kp D      &kp V     &kp K     &kp H     &kp COMMA  &kp DOT  &hrr GLOBE SLASH  &none
-&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 10 RETURN &mokphp 2 BSPC &mokptp 7 DEL
+&mocapsword 4 0 &mokpb 8 SPACE &mokphp 3 TAB                                         &mokptp 9 RETURN &mokphp 2 BSPC &mokptp 7 DEL
             >;
         };
         2 {
@@ -146,10 +164,10 @@ bindings = <
         4 {
             display-name = "BLE";
 bindings = <
-&none &bt BT_CLR_ALL &bt BT_CLR &ext_power EP_TOG &out OUT_TOG &bootloader                               &none &kp C_PREV &kp C_PP &kp C_NEXT &none &none 
-&none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                  &none &kp C_BRI_DN &kp C_BRI_UP &none &none &none 
-&none &bt BT_DISC 0 &bt BT_DISC 1 &bt BT_DISC 2 &bt BT_DISC 3 &bt BT_DISC 4                               &none &none &none &none &none &none 
-            &to 0 &none &none                                              &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP  
+&none &bt BT_CLR_ALL &bt BT_CLR &none &ext_power EP_TOG &out OUT_TOG                               &none &kp C_PREV &kp C_PP &kp C_NEXT &none &none 
+&none &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                             &none &kp C_BRI_DN &kp C_BRI_UP &none &none &none 
+&none &none &none &none &sys_reset &bootloader                                               &none &none &none &none &none &none 
+&to 0 &none &none                                                                                  &kp C_MUTE &kp C_VOL_DN &kp C_VOL_UP  
               >;
         };
         5 {
@@ -175,7 +193,7 @@ bindings = <
 bindings = <
 &none &kp F1 &kp F2 &kp F3 &kp F4 &kp F5                          &kp F6 &kp F7 &kp F8 &kp F9 &kp F10 &none 
 &none &hrl LSHIFT F11 &hrl LALT F12 &hrl LGUI F13 &hrl LCTRL F14 &hrl LS(LG(LA(LCTRL))) F15 &hrr LS(LG(LA(LCTRL))) F16 &hrr RCTRL F17 &hrr RGUI F18 &hrr RALT F19 &hrr LSHIFT F20 &none 
-&none &hrl GLOBE F21 &kp F22 &kp F23 &kp F24 &none                &bootloader &none &none &none &kp GLOBE &none 
+&none &hrl GLOBE F21 &kp F22 &kp F23 &kp F24 &none                &bootloader &sys_reset &none &none &kp GLOBE &none 
       &kp PAUSE_BREAK &kp PSCRN &kp SCROLLLOCK                                          &none &none &to 0
               >;
             };
@@ -189,10 +207,10 @@ bindings = <
               >;
             };
         9 {
-            display-name = "PLOVER";
+            display-name = "STICKY";
 bindings = <
 &none &to 0 &none &none &none &none                             &none &none &none &none &to 1 &none
-&none &none &none &none &none &none                             &none &none &none &none &none &none
+&none &none &to 10 &none &none &none                             &none &none &none &none &none &none
 &none &none &none &to 5 &none &none                             &none &to 6 &none &none &none &none
       &to 4 &to 8 &to 3                                          &none &to 2 &to 7
               >;
@@ -200,10 +218,10 @@ bindings = <
         10 {
             display-name = "STENO";
 bindings = <
-&none &kp S &kp T &kp P &kp H &kp STAR                            &kp F &kp P &kp L &kp T &kp D &none
-&none &none &none &none &none &none                             &none &none &none &none &none &none
-&none &none &none &to 5 &none &none                             &none &to 6 &none &none &none &none
-      &to 4 &to 8 &to 3                                          &none &to 2 &to 7
+&none &to 0 &none &none &none &none                              &none &none &none &none &none &none
+&none &kp N0 &kp W &kp E &kp R &kp T                            &kp U &kp I &kp O &kp P &kp LBKT &none
+&none &kp A &kp S &kp D &kp F &kp G                             &kp J &kp K &kp L &kp SEMI &kp APOS &none
+      &kp N0 &kp C &kp V                                          &kp N &kp M &kp N0
               >;
             };
         };
